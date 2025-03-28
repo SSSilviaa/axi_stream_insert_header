@@ -93,7 +93,6 @@ end
 // 不同的 keep 信号
 integer i, num_beats;
 reg [DATA_WD-1:0] payload_data;
-reg [DATA_BYTE_WD-1:0] payload_keep;
 reg [3:0] keep_options_payload [0:3];
 reg [3:0] keep_options_header [0:3];
 
@@ -170,11 +169,9 @@ initial begin
         valid_in = 0;
         @(posedge clk);
         $display("Burst %0d completed", i);
-
-        repeat (5) @(posedge clk);
     end
     
-    #100;
+    #10;
     $finish;
 end
 
